@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Concert from '../../models/concert.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatCardActions } from '@angular/material/card';
@@ -24,7 +24,10 @@ import { PriceFormatterPipe } from '../../pipes/price-formatter.pipe';
 export class ConcertCardComponent {
   @Input() concert!: Concert;
 
+  @Output() ticketPurchased = new EventEmitter<Concert>();
+
   buyTicket() {
     console.log(`Jegy vásárlása: ${this.concert.name}`);
+    this.ticketPurchased.emit(this.concert);
   }
 }
