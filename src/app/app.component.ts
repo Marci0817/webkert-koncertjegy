@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { ConcertCardComponent } from './components/concert-card/concert-card.component';
 import Concert from './models/concert.model';
 import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ConcertCardComponent, CommonModule],
@@ -12,7 +11,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  isLoggedIn = false;
   title = 'webkert-koncertjegy';
+
+  login() {
+    this.isLoggedIn = true;
+    alert('Bejelentkezve! ( ez csak egy példa )');
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    alert('Kijelentkezve! ( ez csak egy példa )');
+  }
+
+  onTicketPurchased(concert: Concert) {
+    alert(`Vettél egy jegyet erre: ${concert.name}`);
+  }
 
   concerts: Concert[] = [
     {
@@ -40,6 +54,45 @@ export class AppComponent {
       artistName: 'Edda Művek',
       price: 8000,
       availableTickets: 50,
+    },
+    {
+      id: 3,
+      name: 'Quimby',
+      date: new Date('2023-12-20'),
+      location: {
+        name: 'Barba Negra',
+        address: '1117 Budapest, Prielle Kornélia utca 4.',
+        city: 'Budapest',
+      },
+      artistName: 'Quimby',
+      price: 9000,
+      availableTickets: 30,
+    },
+    {
+      id: 4,
+      name: 'Kispál és a Borz',
+      date: new Date('2024-01-10'),
+      location: {
+        name: 'A38 Hajó',
+        address: '1117 Budapest, Petőfi híd, budai hídfő',
+        city: 'Budapest',
+      },
+      artistName: 'Kispál és a Borz',
+      price: 7000,
+      availableTickets: 20,
+    },
+    {
+      id: 5,
+      name: 'Tankcsapda',
+      date: new Date('2024-02-05'),
+      location: {
+        name: 'Főnix Csarnok',
+        address: '4028 Debrecen, Kassai út 26.',
+        city: 'Debrecen',
+      },
+      artistName: 'Tankcsapda',
+      price: 10000,
+      availableTickets: 80,
     },
   ];
 }

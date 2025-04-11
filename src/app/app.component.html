@@ -1,8 +1,35 @@
 <router-outlet />
 
+<div class="intro">
+  <h1>Koncertek</h1>
+  <p>Fedezd fel a legjobb koncerteket és eseményeket!</p>
+  <p>
+    Itt megtalálod a legfrissebb koncerteket és eseményeket, amelyeket érdemes
+    megnézni.
+  </p>
+
+  <div *ngIf="isLoggedIn; else notLoggedIn" class="logged-in">
+    <p>Üdvözöljük, ANONYMOUS!</p>
+    <p>Élvezd a kedvezményeket és az exkluzív ajánlatokat!</p>
+    <button mat-button (click)="logout()" class="logout-button">
+      Kijelentkezés
+    </button>
+  </div>
+
+  <ng-template #notLoggedIn>
+    <div class="not-logged-in">
+      <p>Nem vagy bejelentkezve, így lemaradsz a kedvezményekről!</p>
+      <button mat-button (click)="login()" class="login-button">
+        Bejelentkezés
+      </button>
+    </div>
+  </ng-template>
+</div>
+
 <div class="concert-list">
   <app-concert-card
     *ngFor="let concert of concerts"
     [concert]="concert"
+    (ticketPurchased)="onTicketPurchased($event)"
   ></app-concert-card>
 </div>
