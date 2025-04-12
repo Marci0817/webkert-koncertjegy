@@ -8,23 +8,19 @@
     megnézni.
   </p>
 
-  <div *ngIf="isLoggedIn; else notLoggedIn" class="logged-in">
+  <div *ngIf="userIsLoggedIn; else notLoggedIn" class="logged-in">
     <p>Üdvözöljük, ANONYMOUS!</p>
     <p>Élvezd a kedvezményeket és az exkluzív ajánlatokat!</p>
-    <button mat-button (click)="logout()" class="logout-button">
-      Kijelentkezés
-    </button>
   </div>
 
   <ng-template #notLoggedIn>
     <div class="not-logged-in">
       <p>Nem vagy bejelentkezve, így lemaradsz a kedvezményekről!</p>
-      <button mat-button (click)="login()" class="login-button">
-        Bejelentkezés
-      </button>
     </div>
   </ng-template>
 </div>
+
+<app-auth-form (loginSuccess)="onUserLoggedIn()"></app-auth-form>
 
 <div class="concert-list">
   <app-concert-card

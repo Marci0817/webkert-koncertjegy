@@ -1,0 +1,79 @@
+<div class="auth-container mat-elevation-z4" *ngIf="!isloggedIn">
+  <mat-button-toggle-group
+    class="auth-tabs"
+    [value]="activeTab"
+    (change)="setActiveTab($event.value)"
+  >
+    <mat-button-toggle value="login">Bejelentkezés</mat-button-toggle>
+    <mat-button-toggle value="register">Regisztráció</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <form *ngIf="activeTab === 'login'" (ngSubmit)="onLogin()" class="auth-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        [(ngModel)]="loginData.email"
+        name="email"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jelszó</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="loginData.password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Bejelentkezés
+    </button>
+  </form>
+
+  <form
+    *ngIf="activeTab === 'register'"
+    (ngSubmit)="onRegister()"
+    class="auth-form"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        [(ngModel)]="registerData.email"
+        name="email"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jelszó</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="registerData.password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jelszó újra</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="registerData.confirmPassword"
+        name="confirmPassword"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" type="submit">Regisztráció</button>
+  </form>
+</div>

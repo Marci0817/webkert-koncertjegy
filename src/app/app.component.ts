@@ -3,29 +3,31 @@ import { RouterOutlet } from '@angular/router';
 import { ConcertCardComponent } from './components/concert-card/concert-card.component';
 import Concert from './models/concert.model';
 import { CommonModule } from '@angular/common';
+import { AuthFormComponent } from './auth-form/auth-form.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ConcertCardComponent, CommonModule],
+  imports: [
+    RouterOutlet,
+    ConcertCardComponent,
+    CommonModule,
+    AuthFormComponent,
+  ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  isLoggedIn = false;
   title = 'webkert-koncertjegy';
-
-  login() {
-    this.isLoggedIn = true;
-    alert('Bejelentkezve! ( ez csak egy példa )');
-  }
-
-  logout() {
-    this.isLoggedIn = false;
-    alert('Kijelentkezve! ( ez csak egy példa )');
-  }
 
   onTicketPurchased(concert: Concert) {
     alert(`Vettél egy jegyet erre: ${concert.name}`);
+  }
+
+  userIsLoggedIn = false;
+
+  onUserLoggedIn() {
+    this.userIsLoggedIn = true;
+    console.log('A felhasználó be van jelentkezve!');
   }
 
   concerts: Concert[] = [
