@@ -1,4 +1,9 @@
-<div class="auth-container mat-elevation-z4" *ngIf="!isloggedIn">
+<div
+  class="auth-container mat-elevation-z4"
+  *ngIf="!isloggedIn"
+  [ngClass]="{ 'logged-out': !isloggedIn }"
+  [ngStyle]="{ border: '2px solid #1976d2', transition: '0.3s' }"
+>
   <mat-button-toggle-group
     class="auth-tabs"
     [value]="activeTab"
