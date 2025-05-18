@@ -1,0 +1,32 @@
+@if(!loading) {
+<div class="stats-container">
+  <h2>Koncert statisztikák</h2>
+  <ul>
+    <li>
+      Összes koncert: <strong>{{ totalConcerts }} darab</strong>
+    </li>
+    <li>
+      Elérhető jegyek összesen: <strong>{{ totalTickets }} darab</strong>
+    </li>
+    <li>
+      Legdrágább koncert ára: <strong>{{ maxPrice | priceFormatter }}</strong>
+    </li>
+    <li>
+      Legközelebbi koncert dátuma: @if (nextConcertDate) {
+      <ng-container>
+        {{ nextConcertDate }}
+      </ng-container>
+      }
+    </li>
+  </ul>
+</div>
+} @else{
+<ng-template #loadingTemplate>
+  <p>Statisztikák betöltése...</p>
+</ng-template>
+
+<ng-template #noConcert>
+  <strong>Nincs jövőbeli koncert</strong>
+</ng-template>
+
+}

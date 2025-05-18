@@ -31,6 +31,10 @@ export class ConcertService {
     this.concertCollection = collection(this.firestore, 'concerts');
   }
 
+  getFirestore() {
+    return this.firestore;
+  }
+
   addConcert(concert: Concert): Promise<any> {
     return addDoc(this.concertCollection, concert);
   }

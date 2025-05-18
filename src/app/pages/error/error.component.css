@@ -1,0 +1,21 @@
+.error-container {
+  text-align: center;
+  margin-top: 100px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.error-container h1 {
+  font-size: 3rem;
+  color: #e53935;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.error-container a {
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: bold;
+}

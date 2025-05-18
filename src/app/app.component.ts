@@ -4,25 +4,23 @@ import { ConcertCardComponent } from './components/concert-card/concert-card.com
 import Concert from './models/concert.model';
 import { CommonModule } from '@angular/common';
 import { AuthFormComponent } from './auth-form/auth-form.component';
-import { inject } from '@angular/core';
-import {
-  Firestore,
-  collectionData,
-  collection,
-  Timestamp,
-} from '@angular/fire/firestore';
+import { Timestamp } from '@angular/fire/firestore';
 import { ConcertService } from './services/concert.service';
+import { StatsComponent } from './pages/stats/stats.component';
 @Component({
   selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  standalone: true,
   imports: [
     RouterOutlet,
     ConcertCardComponent,
     CommonModule,
     AuthFormComponent,
+    AuthFormComponent,
+    StatsComponent,
   ],
-
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
   title = 'webkert-koncertjegy';
@@ -55,5 +53,8 @@ export class AppComponent {
     this.concertService.getConcerts().subscribe((concerts) => {
       this.concerts = concerts;
     });
+  }
+  onShowStatistics() {
+    location.href = '/stats';
   }
 }

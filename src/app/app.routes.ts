@@ -1,12 +1,17 @@
-import { Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { StatsComponent } from './pages/stats/stats.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 export const routes: Routes = [
-  //{ path: '', component:  },
-  { path: 'auth', component: AuthFormComponent },
-  { path: 'ticket', component: AuthFormComponent },
-  // 404 fallback route (opcionális)
-  { path: '**', redirectTo: '' },
+  { path: '', component: AppComponent, pathMatch: 'full' },
+  { path: 'stats', component: StatsComponent },
+  { path: '**', component: ErrorComponent },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
