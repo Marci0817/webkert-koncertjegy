@@ -1,7 +1,9 @@
+import { Timestamp } from 'firebase/firestore';
+
 interface Concert {
-  id: number;
+  id?: string;
   name: string;
-  date: Date;
+  date: Timestamp;
   location: Location;
   artistName: string;
   price: number;
