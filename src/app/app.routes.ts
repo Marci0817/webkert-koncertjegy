@@ -6,6 +6,7 @@ import { AuthFormComponent } from './components/auth-form/auth-form.component';
 export const routes: Routes = [
   //{ path: '', component:  },
   { path: 'auth', component: AuthFormComponent },
+  { path: 'ticket', component: AuthFormComponent },
   // 404 fallback route (opcionális)
   { path: '**', redirectTo: '' },
 ];

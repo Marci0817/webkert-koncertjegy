@@ -13,7 +13,8 @@
     <mat-button-toggle value="register">Regisztráció</mat-button-toggle>
   </mat-button-toggle-group>
 
-  <form *ngIf="activeTab === 'login'" (ngSubmit)="onLogin()" class="auth-form">
+  @if (activeTab === 'login') {
+  <form (ngSubmit)="onLogin()" class="auth-form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input
@@ -40,12 +41,8 @@
       Bejelentkezés
     </button>
   </form>
-
-  <form
-    *ngIf="activeTab === 'register'"
-    (ngSubmit)="onRegister()"
-    class="auth-form"
-  >
+  } @if (activeTab === 'register') {
+  <form (ngSubmit)="onRegister()" class="auth-form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input
@@ -81,4 +78,5 @@
 
     <button mat-raised-button color="accent" type="submit">Regisztráció</button>
   </form>
+  }
 </div>

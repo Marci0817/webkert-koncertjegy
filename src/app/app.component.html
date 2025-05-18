@@ -23,9 +23,10 @@
 <app-auth-form (loginSuccess)="onUserLoggedIn()"></app-auth-form>
 
 <div class="concert-list">
+  @for (concert of concerts; track $index) {
   <app-concert-card
-    *ngFor="let concert of concerts"
     [concert]="concert"
     (ticketPurchased)="onTicketPurchased($event)"
   ></app-concert-card>
+  }
 </div>
