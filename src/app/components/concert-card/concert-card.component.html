@@ -1,6 +1,8 @@
 <mat-card class="concert-card">
   <mat-card-header>
-    <mat-card-title class="concert-name">{{ concert.name }}</mat-card-title>
+    <mat-card-title class="concert-name">{{
+      concert.name | capitalize
+    }}</mat-card-title>
     <mat-card-subtitle class="concert-date">{{
       concert.date
     }}</mat-card-subtitle>
